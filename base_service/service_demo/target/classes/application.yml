@@ -1,0 +1,35 @@
+server:
+  port: 9001
+#spring:
+#  application:
+#    name: demoservice
+
+  #配置数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.92.192.246:3306/softtext?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&useUnicode=true
+    username: root
+    password: kuyu_20180914
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:6868/eureka
+#  instance:
+#    perfer-ip-address: true
+
+#feign:
+#  hystrix:
+#    enabled: true
+#
+#
+##hystrix熔断配置
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          #如果设置为false，则请求超时交给ribbon控制
+#        enable: true
+#      isolation:
+#        strategy: SEMAPHORE

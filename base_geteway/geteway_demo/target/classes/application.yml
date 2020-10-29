@@ -1,0 +1,74 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: demogeteway
+  cloud:
+    gateway:
+#      跨域请求配置
+      globalcors:
+        cors-configurations:
+          '[/**]':  #匹配所有请求
+            allowedOrigins: "*"   #跨域请求允许所有域
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+
+      #      discovery:
+#        locator:    #是否与服务发现组件进行结合，通过 serviceId(必须设置成大写) 转发到具体的服务实例。默认为false，设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+#          enabled: true   #路由访问方式：http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问
+      routes:
+        - id: demoservice           #网关路由到demo_service
+          uri: lb://demoservice
+          predicates:
+            - Path=/demoservice/**
+          filters:
+            - StripPrefix= 1
+#            - name: RequestRateLimiter  #请求数限流，名字不能随便写
+#              args:
+#                key_resolver: "#{@ipKeyResolver}"
+#                redis-rate-limiter,replenishRate: 1  #令牌桶每秒填充平均速度
+#                redis-rate-limiter.burstCapacity: 2  #令牌桶总容量
+##                redis-rate-limiter.requestedTokens: 1   #每次请求消耗一个
+
+    #      - id: USER-SERVICE            #网关路由到用户服务user-service
+    #        uri: lb://USER-SERVICE
+    #        predicates:
+    #          - Pach=/USER-SERVICE/**
+
+
+
+  redis:
+    host: 127.0.0.1
+    password: 123456
+    port: 6379
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/ceshi?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;characterEncoding=utf-8
+#    username: root
+#    password: root
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:
+    perfer-ip-address: true
+
+feign:
+  hystrix:
+    enabled: true
+
+
+#hystrix熔断配置
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          #如果设置为false，则请求超时交给ribbon控制
+        enable: true
+      isolation:
+        strategy: SEMAPHORE

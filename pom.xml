@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+<!--SpringCloud和SpringBoot有版本契合要求，版本不匹配就会报错，
+我遇到了Error creating bean with name 'traceFilterRegistration'-->
+
+    <groupId>org.example</groupId>
+    <artifactId>base</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>base_geteway</module>
+        <module>base_service</module>
+        <module>base_service_api</module>
+        <module>base_web</module>
+        <module>base_eureka</module>
+        <module>base_common</module>
+        <module>base_common_db</module>
+        <module>base_canal</module>
+        <module>base_user_oauth</module>
+    </modules>
+    <!-- 加入springboot 父依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+    </parent>
+
+    <properties>
+        <skipTests>true</skipTests>
+    </properties>
+
+<!--  测试  依赖包-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+    </dependencies>
+
+
+
+<!--spring colund-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

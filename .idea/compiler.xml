@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="base_common_db" />
+        <module name="base_eureka" />
+        <module name="service_demo" />
+        <module name="service_poi" />
+        <module name="geteway_demo" />
+        <module name="base_canal" />
+        <module name="api_demo" />
+        <module name="base_user_oauth" />
+        <module name="base_common" />
+        <module name="base_web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api_base" target="1.8" />
+      <module name="service_poi" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api_base" options="-parameters" />
+      <module name="api_demo" options="-parameters" />
+      <module name="base_canal" options="-parameters" />
+      <module name="base_common" options="-parameters" />
+      <module name="base_common_db" options="-parameters" />
+      <module name="base_eureka" options="-parameters" />
+      <module name="base_geteway" options="-parameters" />
+      <module name="base_service" options="-parameters" />
+      <module name="base_service_api" options="-parameters" />
+      <module name="base_user_oauth" options="-parameters" />
+      <module name="base_web" options="-parameters" />
+      <module name="geteway_demo" options="-parameters" />
+      <module name="service_demo" options="-parameters" />
+      <module name="service_poi" options="-parameters" />
+    </option>
+  </component>
+</project>
